@@ -63,7 +63,7 @@ function move() {
         snake.some(segment => segment.x === head.x && segment.y === head.y) // Choca consigo misma
     ) {
         clearInterval(gameInterval); // Detener el juego
-        alert(`¡Game Over! Puntuación: ${score}`);
+        alert(`Game over. Your Score: ${score}`);
         resetGame(); // Reiniciar el juego
         return;
     }
@@ -132,7 +132,8 @@ document.addEventListener('touchmove', (e) => {
         if (deltaY > 0 && direction !== 'up') direction = 'down'; // Deslizamiento hacia abajo
         else if (deltaY < 0 && direction !== 'down') direction = 'up'; // Deslizamiento hacia arriba
     }
-});
+}, { passive: false }); // Asegurar que preventDefault() funcione
+
 
 // Iniciar el juego
 resetGame();
